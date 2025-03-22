@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Menu, Typography, Avatar } from "antd";
+import { Link } from "react-router-dom";
 import {
   HomeOutlined,
   MoneyCollectOutlined,
@@ -7,21 +8,22 @@ import {
   FundOutlined,
   MenuOutlined,
 } from "@ant-design/icons";
+
 import icon from "../images/cryptocurrency.png";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(undefined);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
+    const handleResize = () => setScreenSize(window.innerWidth); //sets screen size
 
     window.addEventListener("resize", handleResize);
+
     handleResize();
 
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, []); // happens once at the start of the page
 
   useEffect(() => {
     if (screenSize <= 800) {
@@ -36,7 +38,7 @@ const Navbar = () => {
       <div className="logo-container">
         <Avatar src={icon} size="large" />
         <Typography.Title level={2} className="logo">
-          <Link to="/">Cryptocread</Link>
+          <Link to="/">Cread</Link>
         </Typography.Title>
         <Button
           className="menu-control-container"
